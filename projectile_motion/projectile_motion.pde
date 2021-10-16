@@ -1,0 +1,53 @@
+PImage panelButton1, panelButton2, remortController1, remortController2, startButton, stopButton, resetButton, timer;
+PrintWriter file;
+int fps, trajectoryCount, radi, number;
+boolean clickedCount, panelCount, resetCount;
+float gravity, count, timerCount;
+PGraphics pg;
+Ball b1, b2;
+void setup() {
+  fullScreen();
+  panelButton1 = loadImage("https://live.staticflickr.com/65535/51564193876_f9b9bcea03_o.png");
+  panelButton1.resize(width / 9, 0);
+  panelButton2 = loadImage("https://live.staticflickr.com/65535/51564881204_9a92af5b7b_o.png");
+  panelButton2.resize(width / 9, 0);
+  remortController1 = loadImage("https://live.staticflickr.com/65535/51565380455_ef50babf79_o.png");
+  remortController1.resize(width / 6, 0);
+  remortController2 = loadImage("https://live.staticflickr.com/65535/51565132884_72d0a3da71_o.png");
+  remortController2.resize(width / 6, 0);
+  startButton = loadImage("https://live.staticflickr.com/65535/51563400792_8950903254_o.png");
+  startButton.resize(5 * width / 72, 0);
+  stopButton = loadImage("https://live.staticflickr.com/65535/51563400782_aace81f8ba_o.png");
+  stopButton.resize(5 * width / 72, 0);
+  resetButton = loadImage("https://live.staticflickr.com/65535/51564881144_0248886998_o.png");
+  resetButton.resize(5 * width / 72, 0);
+  timer = loadImage("https://live.staticflickr.com/65535/51571742538_2fc8db5a00_o.png");
+  timer.resize(width / 6, 0);
+  file = createWriter("test.csv");
+  fps = 60;
+  trajectoryCount = 0;
+  radi = width/50;
+  number = 0;
+  clickedCount = false;
+  panelCount = false;
+  resetCount = true;
+  gravity = 9.8;
+  count = 0;
+  timerCount = 0;
+  pg = createGraphics(width, height);
+  b1 = new Ball(50, 9 * height / 10 - radi, 100, 45, 1, 10, 1, 50, 9 * height / 10 - radi);
+  b2 = new Ball(50, 9 * height / 10 - radi, 100, 30, 2, 10, 1, 50, 9 * height / 10 - radi);
+  frameRate(fps);
+  textSize(width / 100);
+  textAlign(CENTER, CENTER);
+}
+void draw() {
+  data();
+  backGround();
+  remocon();
+  time_count();
+  b1.calculation();
+  b2.calculation();
+  b1.display();
+  b2.display();
+}
