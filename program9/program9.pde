@@ -1,13 +1,27 @@
-PImage light;
+boolean clickedCount;
 
 void setup() {
   size(100, 100);
   frameRate(60);
-  light = loadImage("https://live.staticflickr.com/65535/51575428680_3631bd866f.jpg");
-  light.resize(width, height);
+  clickedCount = false;
 }
 
 void draw() {
   background(255, 255, 255);
-  image(light, 0, 0);
+  if (clickedCount == true) {
+    fill(255, 0, 0);
+  } else {
+    fill(0, 0, 255);
+  }
+  ellipse(50, 50, 100, 100);
+}
+
+void mousePressed() {
+  if (dist(mouseX, mouseY, 50, 50)<50) {
+    if (clickedCount == true) {
+      clickedCount = false;
+    } else {
+      clickedCount = true;
+    }
+  }
 }
