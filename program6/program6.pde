@@ -1,12 +1,13 @@
+PImage panel;
+
 void setup() {
-  size(100, 100);
+  size(150, 50);
   frameRate(60);
-  textSize(15);
-  textAlign(CENTER, CENTER);
+  panel = loadImage("https://live.staticflickr.com/65535/51571742538_4384e0c241_t.jpg");
+  panel.resize(width, height);
 }
 
 void draw() {
   background(255, 255, 255);
-  fill(0);
-  text("sample", 50, 50);
+  image(panel, 0, 0);
 }

@@ -5,6 +5,10 @@ void setup() {
 
 void draw() {
   background(255, 255, 255);
+  grid();
+}
+
+void grid() {
   for (int i = 0; i < width; i+=10) {
     line(i, 0, i, height);
   }

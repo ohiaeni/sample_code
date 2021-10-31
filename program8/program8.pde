@@ -1,13 +1,32 @@
-PImage light;
+float posx;
+int count;
+PrintWriter file;
 
 void setup() {
   size(100, 100);
   frameRate(60);
-  light = loadImage("https://live.staticflickr.com/65535/51575428680_3631bd866f.jpg");
-  light.resize(width, height);
+  posx = 50;
+  count = 0;
+  file = createWriter("test.csv");
+  file.print(count+"frames");
+  file.print(",");
+  file.print(posx);
+  file.println();
 }
 
 void draw() {
   background(255, 255, 255);
-  image(light, 0, 0);
+  posx+=10;
+  count+=1;
+  fill(255, 0, 0, 100);
+  ellipse(posx, 50, 25, 25);
+  file.print(count+"frames");
+  file.print(",");
+  file.print(posx);
+  file.println();
+  if (count == 10) {
+    file.flush();
+    file.close();
+    exit();
+  }
 }

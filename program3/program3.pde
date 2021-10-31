@@ -5,6 +5,10 @@ void setup() {
 
 void draw() {
   background(255, 255, 255);
-  fill(255, 0, 0, 100);
-  ellipse(50, 50, 25, 25);
+  for (int i = 0; i < width; i+=10) {
+    line(i, 0, i, height);
+  }
+  for (int i = 0; i < height; i+=10) {
+    line(0, i, width, i);
+  }
 }

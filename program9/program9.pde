@@ -1,27 +1,27 @@
-boolean clickedCount;
+Ball b1, b2;
 
 void setup() {
   size(100, 100);
   frameRate(60);
-  clickedCount = false;
+  b1 = new Ball(50, 30);
+  b2 = new Ball(0, 60);
 }
 
 void draw() {
   background(255, 255, 255);
-  if (clickedCount == true) {
-    fill(255, 0, 0);
-  } else {
-    fill(0, 0, 255);
-  }
-  ellipse(50, 50, 100, 100);
+  b1.move();
+  b2.move();
 }
 
-void mousePressed() {
-  if (dist(mouseX, mouseY, 50, 50)<50) {
-    if (clickedCount == true) {
-      clickedCount = false;
-    } else {
-      clickedCount = true;
-    }
+class Ball {
+  float posx, posy;
+  Ball(float x, float y) {
+    posx = x;
+    posy = y;
+  }
+  void move() {
+    posx+=0.1;
+    fill(255, 0, 0, 100);
+    ellipse(posx, posy, 25, 25);
   }
 }

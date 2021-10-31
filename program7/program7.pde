@@ -1,16 +1,21 @@
+PGraphics pg;
+float posx;
+
 void setup() {
   size(100, 100);
   frameRate(60);
-  textSize(15);
-  textAlign(CENTER, CENTER);
+  pg = createGraphics(100, 100);
+  posx = 50;
 }
 
 void draw() {
   background(255, 255, 255);
-  text_display();
-}
-
-void text_display() {
-  fill(0);
-  text("sample", 50, 50);
+  posx += 10;
+  pg.beginDraw();
+  pg.fill(255, 255, 0, 100);
+  pg.ellipse(posx, 50, 25, 25);
+  pg.endDraw();
+  image(pg, 0, 0);
+  fill(255, 0, 0, 100);
+  ellipse(posx, 50, 25, 25);
 }
