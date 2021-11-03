@@ -1,27 +1,21 @@
-Ball b1, b2;
+float posy, gravity, count, fps;
 
 void setup() {
   size(100, 100);
-  frameRate(60);
-  b1 = new Ball(50, 30);
-  b2 = new Ball(0, 60);
+  gravity = 9.8;
+  fps = 60;
+  count = 0;
+  frameRate(fps);
 }
 
 void draw() {
-  background(255, 255, 255);
-  b1.move();
-  b2.move();
+  background(255);
+  ball();
 }
 
-class Ball {
-  float posx, posy;
-  Ball(float x, float y) {
-    posx = x;
-    posy = y;
-  }
-  void move() {
-    posx+=0.1;
-    fill(255, 0, 0, 100);
-    ellipse(posx, posy, 25, 25);
-  }
+void ball() {
+  count+=1;
+  posy = (1.0/2.0)*gravity*sq(count/fps);
+  fill(255, 0, 0, 100);
+  ellipse(width/2, posy, 25, 25);
 }

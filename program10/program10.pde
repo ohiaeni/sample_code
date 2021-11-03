@@ -1,21 +1,21 @@
-float posy, gravity, count, fps;
+PGraphics pg;
+float posx;
 
 void setup() {
   size(100, 100);
-  gravity = 9.8;
-  fps = 60;
-  count = 0;
-  frameRate(fps);
+  frameRate(60);
+  pg = createGraphics(100, 100);
+  posx = 50;
 }
 
 void draw() {
-  background(255);
-  ball();
-}
-
-void ball() {
-  count+=1;
-  posy = (1.0/2.0)*gravity*sq(count/fps);
+  background(255, 255, 255);
+  posx += 10;
+  pg.beginDraw();
+  pg.fill(255, 255, 0, 100);
+  pg.ellipse(posx, 50, 25, 25);
+  pg.endDraw();
+  image(pg, 0, 0);
   fill(255, 0, 0, 100);
-  ellipse(width/2, posy, 25, 25);
+  ellipse(posx, 50, 25, 25);
 }
