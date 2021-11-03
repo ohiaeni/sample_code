@@ -7,13 +7,14 @@ void setup() {
   count = 0;
   frameRate(fps);
 }
+
 void draw() {
   background(255);
   ball();
 }
 
 void ball() {
-  count++;
+  count+=1;
   posy = (1.0/2.0)*gravity*sq(count/fps);
   fill(255, 0, 0, 100);
   ellipse(width/2, posy, 25, 25);
