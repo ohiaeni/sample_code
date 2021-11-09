@@ -17,7 +17,7 @@ void backGround() {
     }
   }
   if (resetCount == true) {
-    pg.fill(255);
+    pg.tint(255);
     pg.image(background_img, 0, 0);
   }
   pg.endDraw();
